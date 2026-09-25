@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your work with a vibrant Finding Nemo-themed portfolio that combines creativity and professionalism to impress potential clients or employers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

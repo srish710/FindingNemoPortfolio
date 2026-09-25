@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-ocean-deep: #020d1a;
+  --color-ocean-mid: #061a30;
+  --color-ocean-surface: #0a2540;
+  --color-ocean-light: #0e3460;
+  --color-coral: #ff6b35;
+  --color-coral-light: #ff8c5a;
+  --color-nemo-orange: #f97316;
+  --color-nemo-stripe: #fff7ed;
+  --color-biolum: #00d4ff;
+  --color-biolum-dim: #0099bb;
+  --color-sand: #d4a853;
+  --color-seaweed: #2d7a4f;
+  --color-bubble: rgba(180, 230, 255, 0.25);
+
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-ocean-deep);
+  color: #e0f4ff;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar but allow scrolling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-ocean-deep); }
+::-webkit-scrollbar-thumb { background: var(--color-biolum-dim); border-radius: 3px; }
+
+/* Bubble animation */
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  100% { transform: translateY(-100vh) scale(1.3); opacity: 0; }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(12px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes swim {
+  0%, 100% { transform: translateX(0) scaleX(1); }
+  45% { transform: translateX(30px) scaleX(1); }
+  50% { transform: translateX(30px) scaleX(-1); }
+  95% { transform: translateX(0) scaleX(-1); }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(200, 240, 255, 0.6), rgba(100, 200, 255, 0.1));
+  border: 1px solid rgba(180, 230, 255, 0.4);
+  animation: rise linear infinite;
+  pointer-events: none;
+}
+
+.float-anim {
+  animation: float 4s ease-in-out infinite;
+}
+
+.sway-anim {
+  animation: sway 6s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #e0f4ff 0%, #00d4ff 40%, #ff6b35 60%, #e0f4ff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.ocean-card {
+  background: linear-gradient(135deg, rgba(14, 52, 96, 0.7) 0%, rgba(6, 26, 48, 0.9) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.ocean-card:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.15);
+}
+
+.coral-btn {
+  background: linear-gradient(135deg, #ff6b35, #f97316);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+}
+
+.coral-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.5);
+}
+
+.biolum-btn {
+  background: transparent;
+  border: 2px solid var(--color-biolum);
+  color: var(--color-biolum);
+  font-family: var(--font-display);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.biolum-btn:hover {
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.wave-divider {
+  width: 200%;
+  animation: wave 8s linear infinite;
+}
+
+.nav-link {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: rgba(224, 244, 255, 0.7);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-biolum);
+  transition: width 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--color-biolum);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.skill-bar-fill {
+  background: linear-gradient(90deg, var(--color-biolum-dim), var(--color-biolum));
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 1s ease;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
